@@ -1,0 +1,6 @@
+# Ignore Visual Studio temporary files, build results, and
+# the folder containing project-level settings
+*.vscode/
+.vscode/
+.vs/
+*.vsidx
