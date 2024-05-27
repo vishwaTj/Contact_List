@@ -20,7 +20,7 @@ namespace ContactBE.Buisness
 
         public void DeleteContact(Guid contactId)
         {
-            _contactDL?.DeleteContact(contactId);
+            _contactDL.DeleteContact(contactId);
         }
 
         public List<ContactData> GetContactDatas() => _contactDL.GetContactDatas();

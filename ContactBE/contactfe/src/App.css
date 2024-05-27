@@ -94,3 +94,20 @@
 .close-btn{
   margin: 4px;
 }
+
+@keyframes rollOffAnimation {
+  0% {
+    transform: rotate(0deg) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-270deg) translateY(100px);
+    opacity: 0;
+  }
+}
+
+.rollOff {
+  animation: rollOffAnimation 2s forwards; /* 2s duration for the animation */
+}
+
+
