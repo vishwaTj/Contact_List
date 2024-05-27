@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const ContatBlock = ({name,number,setIsModalOpen,setModifyData,Id,fetchContacts}) => {
+const ContactBlock = ({name,number,setIsModalOpen,setModifyData,Id,fetchContacts}) => {
     const API_URL = "https://localhost:7240/v1/Contact";
 
     const Modification = async () =>{
@@ -38,4 +38,4 @@ const ContatBlock = ({name,number,setIsModalOpen,setModifyData,Id,fetchContacts}
     )
 }
 
-export default ContatBlock
+export default ContactBlock;
