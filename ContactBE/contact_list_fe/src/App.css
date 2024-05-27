@@ -1,0 +1,91 @@
+.App{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   width: 100%;
+}
+.Body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+}
+
+
+.ContactBody{
+  background-color: white;
+  width: 80%;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+.AddNew{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.ContactName{
+  width: 50%;
+  margin-left: 5px;
+}
+
+.ContactNumber{
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 4px;
+}
+
+.icon-btn{
+  cursor: pointer;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.name-input{
+  margin: 2px;
+}
+.name-input label{
+  margin-right: 30px;
+}
+
+.number-input{
+  margin:2px;
+  margin-bottom: 4px;
+}
+.number-input label{
+  margin-right: 13px;
+}
+.submit-btn{
+  margin: 4px;
+}
+.close-btn{
+  margin: 4px;
+}

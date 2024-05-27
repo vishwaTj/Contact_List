@@ -4,3 +4,29 @@
 .vscode/
 .vs/
 *.vsidx
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+./contact_list_fe/node_modules
+./contact_list_fe/.pnp
+./contact_list_fe/.pnp.js
+
+# testing
+./contact_list_fe/coverage
+
+# production
+./contact_list_fe/build
+
+# misc
+./contact_list_fe/.DS_Store
+./contact_list_fe/.env.local
+./contact_list_fe/.env.development.local
+./contact_list_fe/.env.test.local
+./contact_list_fe/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
