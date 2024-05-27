@@ -8,9 +8,9 @@ const AddModifyModal = ({ onClose, onSave, modifyData }) => {
   const validateInput = (name, value) => {
     let error = '';
     if (name === 'name' && value.length > 12) {
-      error = 'Name must be less than 12 characters';
-    } else if (name === 'number' && (!/^\d{10,}$/.test(value))) {
-      error = 'Number must be at least 10 digits';
+      error = ' Name must be less than 12 characters';
+    } else if (name === 'number' && (!/^\d{10,10}$/.test(value))) {
+      error = ' Number must be at least 10 digits';
     }
     setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
   };

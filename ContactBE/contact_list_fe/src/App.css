@@ -83,6 +83,11 @@
 .number-input label{
   margin-right: 13px;
 }
+
+.error{
+  color: red;
+}
+
 .submit-btn{
   margin: 4px;
 }
