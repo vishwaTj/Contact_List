@@ -12,10 +12,13 @@ interface AddModifyModalProps {
 }
 
 const AddModifyModal: React.FC<AddModifyModalProps> = ({ onClose, onSave, modifyData }) => {
+  
+  // states to set Name Number and Error input 
   const [name, setName] = useState(modifyData?.name || '');
   const [number, setNumber] = useState(modifyData?.number || '');
   const [errors, setErrors] = useState<{ name?: string; number?: string }>({});
 
+  // Validate input if it matches the required conditions ////////////////////
   const validateInput = (name: string, value: string) => {
     let error = '';
     if (name === 'name' && value.length > 12) {
@@ -26,6 +29,8 @@ const AddModifyModal: React.FC<AddModifyModalProps> = ({ onClose, onSave, modify
     setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
   };
 
+
+  // Apply the Changes made in the input /////////////////
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (name === 'name') {
@@ -36,6 +41,7 @@ const AddModifyModal: React.FC<AddModifyModalProps> = ({ onClose, onSave, modify
     validateInput(name, value);
   };
 
+  // Save the Modified input ////////////////////////
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!errors.name && !errors.number) {

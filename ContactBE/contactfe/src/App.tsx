@@ -16,6 +16,7 @@ function App() {
 
   const API_URL = "https://localhost:7240/v1/contacts";
 
+  // Fetch contacts /////////////////////
   const getContacts = async (): Promise<Contact[]> => {
     try {
       const response = await axios.get(API_URL);
@@ -25,6 +26,7 @@ function App() {
       throw error;
     }
   };
+
 
   const fetchContacts = useCallback(async () => {
     try {
@@ -41,6 +43,7 @@ function App() {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
+  // Input Modal toggle //////////////
   const toggleModal = () => {
     if (modifyData != null) {
       setModifyData(null);
@@ -48,6 +51,7 @@ function App() {
     setIsModalOpen(!isModalOpen);
   };
 
+  // Function to add or Modify Contact /////////////////
   const addContact = async (contact: Contact) => {
     const { name, number } = contact;
     const newContact = { name, number };
@@ -67,6 +71,7 @@ function App() {
 
   return (
     <div className="App">
+     {/* *********  Main Body Contct list ******** */}
       <div className='Body'>
         <div className='header'>
           <h2>Contact List Application</h2>
@@ -86,6 +91,8 @@ function App() {
           />
         ))}
       </div>
+
+      {/* *********  Modal section for input and modification *********** */}
       {isModalOpen && (
         <AddModifyModal
           onClose={() => setIsModalOpen(false)}

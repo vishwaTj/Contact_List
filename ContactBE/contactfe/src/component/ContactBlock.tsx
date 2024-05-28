@@ -13,9 +13,12 @@ interface ContactBlockProps {
 
 const ContactBlock: React.FC<ContactBlockProps> = ({ name, number, setIsModalOpen, setModifyData, Id, fetchContacts }) => {
   const API_URL = "https://localhost:7240/v1/contacts";
+  
+  // States for animation
   const [deleteroll, setDeleteRoll] = useState(false);
   const [updateRoll, setUpdateRoll] = useState(false);
 
+  // Modify a contact function ///////////////////////
   const Modification = async () => {
     try {
       setUpdateRoll(true);
@@ -30,6 +33,7 @@ const ContactBlock: React.FC<ContactBlockProps> = ({ name, number, setIsModalOpe
     }
   }
 
+  // Delete a contact function ////////////////////
   const DeleteContact = async () => {
     try {
       await axios.delete(`${API_URL}/${Id}`);
