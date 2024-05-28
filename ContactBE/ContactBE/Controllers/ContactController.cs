@@ -2,11 +2,12 @@ using ContactBE.Buisness;
 using ContactBE.Models;
 using ContactBE.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace ContactBE.Controllers
 {
     [ApiController]
-    [Route("v1/[controller]")]
+    [Route("v1/contacts")]
     public class ContactController : ControllerBase
     {
  
@@ -23,8 +24,8 @@ namespace ContactBE.Controllers
         /// </summary>
         /// <returns>List of Contacts</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(List<ContactData>), StatusCodes.Status200OK)]
-        public List<ContactData> GetContacts() => _contactBL.GetContactDatas();
+        [SwaggerOperation(Summary = "Get Appointments")]
+        public List<ContactData> GetContacts() => _contactBL.GetContacts();
 
         /// <summary>
         /// Returns a single Contact
@@ -32,7 +33,7 @@ namespace ContactBE.Controllers
         /// <param name="id"></param>
         /// <returns>Returns Contact data for the given Id</returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(ContactData), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get an Appointment")]
         public ContactData GetContactData(Guid id) => _contactBL.GetContactData(id);
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace ContactBE.Controllers
         /// <param name="contactDto"></param>
         /// <returns>Returns Guid of the successfully created contact</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+        [SwaggerOperation(Summary = "Create an Appointment")]
         public ActionResult<Guid> CreateContact(CreateContactDto contactDto) {
             return _contactBL.AddNewContact(contactDto);
         }
@@ -51,7 +52,7 @@ namespace ContactBE.Controllers
         /// </summary>
         /// <param name="contact"></param>
         [HttpPut]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [SwaggerOperation(Summary = "Update Appointment")]
         public void UpdateContact(ContactData contact)
         {
             _contactBL.UpdateContact(contact);
@@ -62,7 +63,7 @@ namespace ContactBE.Controllers
         /// </summary>
         /// <param name="id"></param>
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [SwaggerOperation(Summary = "Delete an Appointment")]
         public void DeleteContact(Guid id)
         {
             _contactBL.DeleteContact(id);

@@ -7,6 +7,16 @@ namespace ContactBE.DataAccess
     {
         private List<ContactData> contacts = new List<ContactData>();
 
+        public List<ContactData> GetContacts()
+        {
+            return contacts;
+        }
+
+        public ContactData GetContactData(Guid contactId)
+        {
+            return contacts.Find(existingItem => existingItem.Id == contactId);
+        }
+
         public Guid AddNewContact(CreateContactDto contactDto)
         {
             var contact = new ContactData {
@@ -17,22 +27,6 @@ namespace ContactBE.DataAccess
             contacts.Add(contact);
             return contact.Id;
         }
-
-        public void DeleteContact(Guid contactId)
-        {
-            contacts.RemoveAt(contacts.FindIndex(existingItem => existingItem.Id == contactId));
-        }
-
-        public List<ContactData> GetContactDatas()
-        {
-            return contacts;
-        }
-
-        public ContactData GetContactData(Guid contactId)
-        {
-            return contacts.Find(existingItem => existingItem.Id == contactId);
-        }
-
         public void UpdateContact(ContactData data)
         {
             var contact = contacts.FirstOrDefault(c => c.Id == data.Id);
@@ -47,5 +41,11 @@ namespace ContactBE.DataAccess
             }
 
         }
+
+        public void DeleteContact(Guid contactId)
+        {
+            contacts.RemoveAt(contacts.FindIndex(existingItem => existingItem.Id == contactId));
+        }
+
     }
 }

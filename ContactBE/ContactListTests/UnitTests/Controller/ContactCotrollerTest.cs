@@ -31,7 +31,7 @@ namespace ContactListTests.UnitTests.Controller
                 new ContactData { Id = Guid.NewGuid(), Name = "Test Name 2", Number = "0000000002" }
             };
 
-            mockContactBL.Setup(bl => bl.GetContactDatas()).Returns(mockContactDataList);
+            mockContactBL.Setup(bl => bl.GetContacts()).Returns(mockContactDataList);
 
             // Act
             var result = contactController.GetContacts();

@@ -221,12 +221,12 @@ var assemblies = [
   {
     "name": "ContactBE",
     "classes": [
-      { "name": "ContactBE.Buisness.ContactBL", "rp": "ContactBE_ContactBL.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 34, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "ContactBE.Controllers.ContactController", "rp": "ContactBE_ContactController.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 71, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ContactBE.Buisness.ContactBL", "rp": "ContactBE_ContactBL.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 35, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ContactBE.Controllers.ContactController", "rp": "ContactBE_ContactController.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 72, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ContactBE.DataAccess.ContactDL", "rp": "ContactBE_ContactDL.html", "cl": 30, "ucl": 0, "cal": 30, "tl": 51, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ContactBE.Models.ContactData", "rp": "ContactBE_ContactData.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ContactBE.Models.Dtos.CreateContactDto", "rp": "ContactBE_CreateContactDto.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Program", "rp": "ContactBE_Program.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 42, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Program", "rp": "ContactBE_Program.html", "cl": 0, "ucl": 34, "cal": 34, "tl": 53, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
 ];
 

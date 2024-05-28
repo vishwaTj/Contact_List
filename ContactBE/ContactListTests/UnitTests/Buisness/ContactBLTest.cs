@@ -28,10 +28,10 @@ namespace ContactListTests.UnitTests.Buisness
         public void TestGetContactDatasTestBL()
         {
             //Arrange
-             mockContactDL.Setup(x => x.GetContactDatas()).Returns(mock.contacts);
+             mockContactDL.Setup(x => x.GetContacts()).Returns(mock.contacts);
 
             //Act
-            var result = contactBL.GetContactDatas();
+            var result = contactBL.GetContacts();
 
             // Assert
             Assert.NotNull(result);

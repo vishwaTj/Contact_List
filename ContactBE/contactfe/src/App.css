@@ -9,12 +9,18 @@
   flex-direction: column;
   align-items: center;
   width: 70%;
+  margin-top: 40px;
+}
+
+
+.header h2{
+  color: black;
 }
 
 
 .ContactBody{
   background-color: white;
-  width: 80%;
+  width: 65%;
   height: 35px;
   display: flex;
   flex-direction: row;
@@ -72,14 +78,21 @@
 .name-input{
   margin: 2px;
 }
+.name-input input{
+  border-radius: 5px;
+}
 .name-input label{
   margin-right: 30px;
 }
 
 .number-input{
   margin:2px;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
+.number-input input{
+  border-radius: 5px;
+}
+
 .number-input label{
   margin-right: 13px;
 }
@@ -111,3 +124,58 @@
 }
 
 
+@keyframes horizontalRotation {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+.rotateHorizontal {
+  background-color: yellowgreen;
+  animation: horizontalRotation 2s forwards;
+}
+
+
+ /* Button styling */
+
+ .button-toggle {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.button-toggle:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.button-toggle:active {
+  background-color: #004494;
+  transform: translateY(0);
+}
+
+.button-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.submit-btn{
+  background-color: greenyellow;
+}
+
+.close-btn{
+  background-color: red;
+}

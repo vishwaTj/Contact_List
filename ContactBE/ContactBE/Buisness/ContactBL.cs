@@ -13,22 +13,23 @@ namespace ContactBE.Buisness
             _contactDL = contactDL;
         }
 
+        public List<ContactData> GetContacts() => _contactDL.GetContacts();
+
+        public ContactData GetContactData(Guid contactId) => _contactDL.GetContactData(contactId);
+
         public Guid AddNewContact(CreateContactDto contactDto)
         {
             return _contactDL.AddNewContact(contactDto);
         }
 
-        public void DeleteContact(Guid contactId)
-        {
-            _contactDL.DeleteContact(contactId);
-        }
-
-        public List<ContactData> GetContactDatas() => _contactDL.GetContactDatas();
-
-        public ContactData GetContactData(Guid contactId) => _contactDL.GetContactData(contactId);
         public void UpdateContact(ContactData contact)
         {
             _contactDL.UpdateContact(contact);
+        }
+
+        public void DeleteContact(Guid contactId)
+        {
+            _contactDL.DeleteContact(contactId);
         }
     }
 }

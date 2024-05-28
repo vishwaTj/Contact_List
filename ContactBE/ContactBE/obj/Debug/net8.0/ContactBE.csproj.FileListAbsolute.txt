@@ -63,3 +63,4 @@ D:\Project\ContactBE\ContactBE\obj\Debug\net8.0\ContactBE.pdb
 D:\Project\ContactBE\ContactBE\obj\Debug\net8.0\ContactBE.genruntimeconfig.cache
 D:\Project\ContactBE\ContactBE\obj\Debug\net8.0\ref\ContactBE.dll
 D:\Project\ContactBE\ContactBE\obj\Debug\net8.0\ContactBE.sourcelink.json
+D:\Project\ContactBE\ContactBE\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll

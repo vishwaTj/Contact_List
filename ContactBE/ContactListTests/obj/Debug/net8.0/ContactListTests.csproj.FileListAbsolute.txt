@@ -112,3 +112,4 @@ D:\Project\ContactBE\ContactListTests\obj\Debug\net8.0\ContactListTests.genrunti
 D:\Project\ContactBE\ContactListTests\obj\Debug\net8.0\ref\ContactListTests.dll
 D:\Project\ContactBE\ContactListTests\bin\Debug\net8.0\Castle.Core.dll
 D:\Project\ContactBE\ContactListTests\bin\Debug\net8.0\Moq.dll
+D:\Project\ContactBE\ContactListTests\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll

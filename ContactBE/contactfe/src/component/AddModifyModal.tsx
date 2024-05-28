@@ -19,9 +19,9 @@ const AddModifyModal: React.FC<AddModifyModalProps> = ({ onClose, onSave, modify
   const validateInput = (name: string, value: string) => {
     let error = '';
     if (name === 'name' && value.length > 12) {
-      error = 'Name must be less than 12 characters';
+      error = ' Name must be less than 12 characters';
     } else if (name === 'number' && (!/^\d{10}$/.test(value))) {
-      error = 'Number must be 10 digits';
+      error = ' Number must be 10 digits';
     }
     setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
   };
@@ -74,8 +74,8 @@ const AddModifyModal: React.FC<AddModifyModalProps> = ({ onClose, onSave, modify
             />
             {errors.number && <span className="error">{errors.number}</span>}
           </div>
-          <button className='submit-btn' type="submit">Save</button>
-          <button className='close-btn' type="button" onClick={onClose}>Close</button>
+          <button className='submit-btn button-toggle' type="submit">Save</button>
+          <button className='close-btn button-toggle' type="button" onClick={onClose}>Close</button>
         </form>
       </div>
     </div>

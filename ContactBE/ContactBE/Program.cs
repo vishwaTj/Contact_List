@@ -1,5 +1,6 @@
 using ContactBE.Buisness;
 using ContactBE.DataAccess;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,16 @@ builder.Services.AddCors(options =>
             .WithOrigins("http://localhost:800") // URL of your React app
             .AllowAnyMethod()
             .AllowAnyHeader());
+});
+
+builder.Services.AddSwaggerGen(x =>
+{
+    x.SwaggerDoc("v1", new OpenApiInfo 
+    {
+        Title = "Contact List API",
+        Version = "v1",
+        Description = "An ASP.NET Core Web API for managing Contacts in a Phonebook"
+    });
 });
 
 // Add services to the container.

@@ -27,7 +27,7 @@ namespace ContactListTests.UnitTests.DataAccess
         public void GetContactDatasTest()
         {
             // Get contacts list
-            var result = contactDL.GetContactDatas();
+            var result = contactDL.GetContacts();
             Assert.NotNull(result);
         }
 

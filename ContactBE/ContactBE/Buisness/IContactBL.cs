@@ -5,14 +5,21 @@ namespace ContactBE.Buisness
 {
     public interface IContactBL
     {
-        public List<ContactData> GetContactDatas();
+        // Function returns a list of Contacts
+        public List<ContactData> GetContacts();
 
+        //Function returns a specific contact for that id
         public ContactData GetContactData(Guid id);
+
+        //Function creates a new contact and returns its Guid
         public Guid AddNewContact(CreateContactDto contactDto);
 
+        //Function Deletes a contact
+        public void UpdateContact(ContactData contact);
+
+        // Function deletes a contact
         public void DeleteContact(Guid contactId);
 
-        public void UpdateContact(ContactData contact);
 
     }
 }

@@ -12,14 +12,19 @@ interface ContactBlockProps {
 }
 
 const ContactBlock: React.FC<ContactBlockProps> = ({ name, number, setIsModalOpen, setModifyData, Id, fetchContacts }) => {
-  const API_URL = "https://localhost:7240/v1/Contact";
+  const API_URL = "https://localhost:7240/v1/contacts";
   const [deleteroll, setDeleteRoll] = useState(false);
+  const [updateRoll, setUpdateRoll] = useState(false);
 
   const Modification = async () => {
     try {
+      setUpdateRoll(true);
       const contact = await axios.get(`${API_URL}/${Id}`);
       setModifyData(contact.data);
       setIsModalOpen(true);
+      setTimeout(() => {
+        setUpdateRoll(false);
+      }, 2000); 
     } catch (error) {
       console.error('Error fetching contact:', error);
     }
@@ -31,15 +36,15 @@ const ContactBlock: React.FC<ContactBlockProps> = ({ name, number, setIsModalOpe
       setDeleteRoll(true);
       setTimeout(() => {
         fetchContacts();
-        setDeleteRoll(false); // Reset the state if you want to reuse the component
-      }, 2000); // Duration should match the CSS animation duration
+        setDeleteRoll(false);
+      }, 2000); 
     } catch (error) {
       console.error('Error deleting contact:', error);
     }
   }
 
   return (
-    <div className={classNames('ContactBody', { 'rollOff': deleteroll })}>
+    <div className={classNames('ContactBody', { 'rollOff': deleteroll, 'rotateHorizontal': updateRoll })}>
       <div className='ContactName'>
         {name}
       </div>

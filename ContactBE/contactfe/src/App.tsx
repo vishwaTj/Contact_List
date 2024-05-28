@@ -14,7 +14,7 @@ function App() {
   const [contactList, setContactList] = useState<Contact[]>([]);
   const [modifyData, setModifyData] = useState<Contact | null>(null);
 
-  const API_URL = "https://localhost:7240/v1/Contact";
+  const API_URL = "https://localhost:7240/v1/contacts";
 
   const getContacts = async (): Promise<Contact[]> => {
     try {
@@ -71,7 +71,7 @@ function App() {
         <div className='header'>
           <h2>Contact List Application</h2>
           <div className='AddNew'>
-            <button onClick={toggleModal}>Add new</button>
+            <button className="button-toggle" onClick={toggleModal}>Add new</button>
           </div>
         </div>
         {contactList.map(contact => (
