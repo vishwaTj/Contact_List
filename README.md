@@ -18,3 +18,12 @@ Developed using React
 Components for contact and input modal were added
 animations were added to add, remove and update contacts
 
+Test:-
+Unit tests have been added in the test project and also
+a report has been generated based on code coverage to access it
+go to coverage report folder inside the test project and 
+open the last index html file in chrome.
+
+![image](https://github.com/vishwaTj/Contact_List/assets/109414918/952677b6-8810-4836-a92c-3e802b459eaf)
+
+
