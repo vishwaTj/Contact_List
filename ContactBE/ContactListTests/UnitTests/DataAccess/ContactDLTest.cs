@@ -1,12 +1,118 @@
-﻿using ContactBE.DataAccess;
+﻿//using ContactBE.DataAccess;
+//using ContactBE.Models;
+//using ContactBE.Models.Dtos;
+//using ContactListTests.UnitTests.MockFolder;
+//using Moq;
+
+//namespace ContactListTests.UnitTests.DataAccess
+//{
+//    public class ContactDLTest
+//    {
+//        private ContactDL contactDL;
+//        private MockContact mockContact;
+//        private Mock<ContactDatabase> _contactDatabase;
+
+//        public ContactDLTest()
+//        {
+//            _contactDatabase = new Mock<ContactDatabase>();
+//            contactDL = new ContactDL(_contactDatabase.Object);
+//            mockContact = new MockContact();
+//        } 
+
+
+//        [Fact]
+//        public void GetContactDatasTest()
+//        {
+//            // Get contacts list
+//            var result = contactDL.GetContacts();
+//            Assert.NotNull(result);
+//        }
+
+//        [Fact]
+//        public void GetContactDataTest()
+//        {
+//            // create contact
+//            var contactDto = mockContact.CreateContactDto();
+//            var result = contactDL.AddNewContact(contactDto);
+
+//            var contact = contactDL.GetContactData(result);
+
+//            //Assert check if the data matches
+//            Assert.Equal(contact.Name, contactDto.Name);
+//            Assert.Equal(contact.Number, contactDto.Number);
+//        }
+
+//        [Fact]
+//        public void CreateContactDataTest()
+//        {
+//            // create contact
+//            var contactDto = mockContact.CreateContactDto();
+//            var result = contactDL.AddNewContact(contactDto);
+
+//            // Assert check the return type
+//            Assert.NotNull(result);
+//            Assert.IsType<Guid>(result);
+//        }
+
+//        [Fact]
+//        public void DeleteContactDataTest()
+//        {
+//            // create a contact
+//            var contactDto = mockContact.CreateContactDto();
+//            var result = contactDL.AddNewContact(contactDto);
+
+//            // delete the contact
+//            contactDL.DeleteContact(result);
+
+//            //Assert check if contact exists
+//            var contact = contactDL.GetContactData(result);
+//            Assert.Null(contact);
+//        }
+
+//        [Fact]
+//        public void UpdateContactData()
+//        {
+//            // create a contact
+//            var contactDto = mockContact.CreateContactDto();
+//            var result = contactDL.AddNewContact(contactDto);
+//            var newContactData = new ContactData { Id = result, Name = "Updated", Number = "00000" };
+
+
+//            // update contact
+//            contactDL.UpdateContact(newContactData);
+
+//            // Assert get the updated contact data
+//            var contact = contactDL.GetContactData(result);
+//            Assert.Equal(contact.Name, newContactData.Name);
+//            Assert.Equal(contact.Number, newContactData.Number);
+//        }
+
+//        [Fact]
+//        public void UpdateContactDataNotFound()
+//        {
+//            // create a contact
+//            var contactDto = mockContact.CreateContactDto();
+//            var result = contactDL.AddNewContact(contactDto);
+//            var newContactData = new ContactData { Id = Guid.NewGuid(), Name = "Updated", Number = "00000" };
+
+
+//            // update contact
+//            contactDL.UpdateContact(newContactData);
+
+//            // Assert get the updated contact data
+//            var contact = contactDL.GetContactData(newContactData.Id);
+//            Assert.Null(contact);
+//        }
+//    }
+//}
+using ContactBE.DataAccess;
 using ContactBE.Models;
 using ContactBE.Models.Dtos;
 using ContactListTests.UnitTests.MockFolder;
+using Microsoft.EntityFrameworkCore;
+using Moq;
+using Xunit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactListTests.UnitTests.DataAccess
 {
@@ -14,33 +120,58 @@ namespace ContactListTests.UnitTests.DataAccess
     {
         private ContactDL contactDL;
         private MockContact mockContact;
-        
-        
+        private DbContextOptions<ContactDatabase> _options;
+
         public ContactDLTest()
         {
-            contactDL = new ContactDL();
+            _options = new DbContextOptionsBuilder<ContactDatabase>()
+                .UseInMemoryDatabase(databaseName: "TestContactDatabase")
+                .Options;
+
+            using (var context = new ContactDatabase(_options))
+            {
+                context.Database.EnsureCreated();
+            }
+
+            var contextInstance = new ContactDatabase(_options);
+            contactDL = new ContactDL(contextInstance);
             mockContact = new MockContact();
-        } 
-        
-            
+        }
+
         [Fact]
         public void GetContactDatasTest()
         {
-            // Get contacts list
+            // Arrange: Add a contact to the in-memory database
+            using (var context = new ContactDatabase(_options))
+            {
+                context.Contacts.Add(new ContactData
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "John Doe",
+                    Number = "1234567890"
+                });
+                context.SaveChanges();
+            }
+
+            // Act: Get contacts list
             var result = contactDL.GetContacts();
+
+            // Assert: Check if the result is not null and contains the added contact
             Assert.NotNull(result);
+            Assert.True(result.Count > 0);
         }
 
         [Fact]
         public void GetContactDataTest()
         {
-            // create contact
+            // Arrange: Create and add a contact
             var contactDto = mockContact.CreateContactDto();
-            var result = contactDL.AddNewContact(contactDto);
+            var resultId = contactDL.CreateContact(contactDto);
 
-            var contact = contactDL.GetContactData(result);
+            // Act: Retrieve the contact
+            var contact = contactDL.GetContactData(resultId);
 
-            //Assert check if the data matches
+            // Assert: Check if the data matches
             Assert.Equal(contact.Name, contactDto.Name);
             Assert.Equal(contact.Number, contactDto.Number);
         }
@@ -48,11 +179,13 @@ namespace ContactListTests.UnitTests.DataAccess
         [Fact]
         public void CreateContactDataTest()
         {
-            // create contact
+            // Arrange: Create contact DTO
             var contactDto = mockContact.CreateContactDto();
-            var result = contactDL.AddNewContact(contactDto);
-            
-            // Assert check the return type
+
+            // Act: Add new contact
+            var result = contactDL.CreateContact(contactDto);
+
+            // Assert: Check the return type and value
             Assert.NotNull(result);
             Assert.IsType<Guid>(result);
         }
@@ -60,32 +193,31 @@ namespace ContactListTests.UnitTests.DataAccess
         [Fact]
         public void DeleteContactDataTest()
         {
-            // create a contact
+            // Arrange: Create and add a contact
             var contactDto = mockContact.CreateContactDto();
-            var result = contactDL.AddNewContact(contactDto);
+            var resultId = contactDL.CreateContact(contactDto);
 
-            // delete the contact
-            contactDL.DeleteContact(result);
+            // Act: Delete the contact
+            contactDL.DeleteContact(resultId);
 
-            //Assert check if contact exists
-            var contact = contactDL.GetContactData(result);
+            // Assert: Check if the contact exists
+            var contact = contactDL.GetContactData(resultId);
             Assert.Null(contact);
         }
 
         [Fact]
         public void UpdateContactData()
         {
-            // create a contact
+            // Arrange: Create and add a contact
             var contactDto = mockContact.CreateContactDto();
-            var result = contactDL.AddNewContact(contactDto);
-            var newContactData = new ContactData { Id = result, Name = "Updated", Number = "00000" };
+            var resultId = contactDL.CreateContact(contactDto);
+            var newContactData = new ContactData { Id = resultId, Name = "Updated", Number = "00000" };
 
-
-            // update contact
+            // Act: Update contact
             contactDL.UpdateContact(newContactData);
 
-            // Assert get the updated contact data
-            var contact = contactDL.GetContactData(result);
+            // Assert: Retrieve and check the updated contact data
+            var contact = contactDL.GetContactData(resultId);
             Assert.Equal(contact.Name, newContactData.Name);
             Assert.Equal(contact.Number, newContactData.Number);
         }
@@ -93,18 +225,18 @@ namespace ContactListTests.UnitTests.DataAccess
         [Fact]
         public void UpdateContactDataNotFound()
         {
-            // create a contact
+            // Arrange: Create and add a contact
             var contactDto = mockContact.CreateContactDto();
-            var result = contactDL.AddNewContact(contactDto);
+            var resultId = contactDL.CreateContact(contactDto);
             var newContactData = new ContactData { Id = Guid.NewGuid(), Name = "Updated", Number = "00000" };
 
-
-            // update contact
+            // Act: Update contact with a new ID
             contactDL.UpdateContact(newContactData);
 
-            // Assert get the updated contact data
+            // Assert: Check if the contact data is null
             var contact = contactDL.GetContactData(newContactData.Id);
             Assert.Null(contact);
         }
+
     }
 }

@@ -67,7 +67,7 @@ namespace ContactListTests.UnitTests.Controller
             var contactDto = new CreateContactDto { Name = "Test Name", Number = "0000000000" };
             var newContactId = Guid.NewGuid();
 
-            mockContactBL.Setup(bl => bl.AddNewContact(contactDto)).Returns(newContactId);
+            mockContactBL.Setup(bl => bl.CreateContact(contactDto)).Returns(newContactId);
 
             // Act
             var result = contactController.CreateContact(contactDto);

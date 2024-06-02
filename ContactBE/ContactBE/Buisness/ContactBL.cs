@@ -15,11 +15,13 @@ namespace ContactBE.Buisness
 
         public List<ContactData> GetContacts() => _contactDL.GetContacts();
 
+        public List<ContactData> GetDefaultContacts() => _contactDL.GetDefaultContacts();
+
         public ContactData GetContactData(Guid contactId) => _contactDL.GetContactData(contactId);
 
-        public Guid AddNewContact(CreateContactDto contactDto)
+        public Guid CreateContact(CreateContactDto contactDto)
         {
-            return _contactDL.AddNewContact(contactDto);
+            return _contactDL.CreateContact(contactDto);
         }
 
         public void UpdateContact(ContactData contact)

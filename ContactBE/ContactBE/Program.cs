@@ -1,5 +1,7 @@
 using ContactBE.Buisness;
 using ContactBE.DataAccess;
+using ContactBE.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,8 +32,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IContactBL, ContactBL>();
-builder.Services.AddSingleton<IContactDL, ContactDL>();
+builder.Services.AddDbContext<ContactDatabase>(options =>
+    options.UseInMemoryDatabase("ContactDatabase"));
+
+builder.Services.AddScoped<IContactBL, ContactBL>();
+builder.Services.AddScoped<IContactDL, ContactDL>();
 
 var app = builder.Build();
 
@@ -51,3 +56,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+public partial class Program { }

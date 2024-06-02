@@ -5,46 +5,72 @@ namespace ContactBE.DataAccess
 {
     public class ContactDL : IContactDL
     {
-        private List<ContactData> contacts = new List<ContactData>();
+        private readonly ContactDatabase _context;
+
+        public ContactDL(ContactDatabase context)
+        {
+            _context = context;
+        }
+
 
         public List<ContactData> GetContacts()
         {
-            return contacts;
+            return _context.Contacts.ToList();
+        }
+
+        public List<ContactData> GetDefaultContacts()
+        {
+            var defaultContacts = new DefaultContactsDto();
+            var defaultContactsData = defaultContacts.GetDefaultContacts();
+
+            foreach (var contact in defaultContactsData)
+            {
+                if (!_context.Contacts.Any(c => c.Name == contact.Name && c.Number == contact.Number))
+                {
+                    _context.Contacts.Add(contact);
+                }
+            }
+
+            _context.SaveChanges();
+            return _context.Contacts.ToList();
         }
 
         public ContactData GetContactData(Guid contactId)
         {
-            return contacts.Find(existingItem => existingItem.Id == contactId);
+             return _context.Contacts.Find(contactId);
         }
 
-        public Guid AddNewContact(CreateContactDto contactDto)
+
+        public Guid CreateContact(CreateContactDto contactDto)
         {
             var contact = new ContactData {
                 Id = Guid.NewGuid(),
                 Name = contactDto.Name,
                 Number = contactDto.Number,
             };
-            contacts.Add(contact);
+            _context.Contacts.Add(contact);
+            _context.SaveChanges();
             return contact.Id;
         }
         public void UpdateContact(ContactData data)
         {
-            var contact = contacts.FirstOrDefault(c => c.Id == data.Id);
-            if (contact != null)
+            var existingContact = _context.Contacts.Find(data.Id);
+            if (existingContact != null)
             {
-                contact.Name = data.Name;
-                contact.Number = data.Number;
-            }
-            else
-            {
-                Console.WriteLine("Contact not found.");
+                _context.Entry(existingContact).CurrentValues.SetValues(data);
+                _context.SaveChanges();
             }
 
         }
 
         public void DeleteContact(Guid contactId)
         {
-            contacts.RemoveAt(contacts.FindIndex(existingItem => existingItem.Id == contactId));
+            var contact = _context.Contacts.Find(contactId);
+            if (contact != null)
+            {
+                _context.Contacts.Remove(contact);
+                _context.SaveChanges();
+            }
         }
 
     }

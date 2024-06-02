@@ -59,10 +59,10 @@ namespace ContactListTests.UnitTests.Buisness
             //Arrange
             var id = Guid.NewGuid();
             var contactDto = mock.CreateContactDto();
-            mockContactDL.Setup(x => x.AddNewContact(contactDto)).Returns(id);
+            mockContactDL.Setup(x => x.CreateContact(contactDto)).Returns(id);
 
             //Act
-            var result = contactBL.AddNewContact(contactDto);
+            var result = contactBL.CreateContact(contactDto);
 
             //Assert
             Assert.NotNull(result);

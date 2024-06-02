@@ -31,12 +31,63 @@
   margin: 3px;
 }
 
+.main-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .AddNew{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.AddDefualt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.Search-bar {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.Search-bar:focus {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.search-container{
+  position: absolute;
+  right: 60px;
+  top:10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-icon{
+  position: absolute;
+  top:22px;
+  right:16px;
+}
+
+.invisible{
+  display: none !important;
 }
 
 .ContactName{

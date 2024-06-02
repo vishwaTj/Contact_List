@@ -27,6 +27,14 @@ namespace ContactBE.Controllers
         [SwaggerOperation(Summary = "Get Appointments")]
         public List<ContactData> GetContacts() => _contactBL.GetContacts();
 
+        ///<summary>
+        ///Fetch Default Contancts
+        ///</summary>
+        ///<returns> appends a list of default contacts to existing ones </returns>
+        [HttpGet("default")]
+        [SwaggerOperation(Summary = "Get Appointments")]
+        public List<ContactData> GetDefaultContacts() => _contactBL.GetDefaultContacts();
+
         /// <summary>
         /// Returns a single Contact
         /// </summary>
@@ -44,7 +52,7 @@ namespace ContactBE.Controllers
         [HttpPost]
         [SwaggerOperation(Summary = "Create an Appointment")]
         public ActionResult<Guid> CreateContact(CreateContactDto contactDto) {
-            return _contactBL.AddNewContact(contactDto);
+            return _contactBL.CreateContact(contactDto);
         }
 
         /// <summary>

@@ -8,11 +8,14 @@ namespace ContactBE.DataAccess
         //Function returns a list of contacts
         public List<ContactData> GetContacts();
 
+        //Function returns 10 default contacts
+        public List<ContactData> GetDefaultContacts();
+
         //Function returns a specific contact
         public ContactData GetContactData(Guid id);
 
         //Function Adds a new contact
-        public Guid AddNewContact(CreateContactDto contactDto);
+        public Guid CreateContact(CreateContactDto contactDto);
 
         //Function Updates an existing contact
         public void UpdateContact(ContactData contact);

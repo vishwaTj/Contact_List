@@ -221,12 +221,14 @@ var assemblies = [
   {
     "name": "ContactBE",
     "classes": [
-      { "name": "ContactBE.Buisness.ContactBL", "rp": "ContactBE_ContactBL.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 35, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "ContactBE.Controllers.ContactController", "rp": "ContactBE_ContactController.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 72, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "ContactBE.DataAccess.ContactDL", "rp": "ContactBE_ContactDL.html", "cl": 30, "ucl": 0, "cal": 30, "tl": 51, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ContactBE.Buisness.ContactBL", "rp": "ContactBE_ContactBL.html", "cl": 16, "ucl": 0, "cal": 16, "tl": 37, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ContactBE.Controllers.ContactController", "rp": "ContactBE_ContactController.html", "cl": 16, "ucl": 0, "cal": 16, "tl": 80, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ContactBE.DataAccess.ContactDL", "rp": "ContactBE_ContactDL.html", "cl": 49, "ucl": 0, "cal": 49, "tl": 77, "cb": 8, "tb": 8, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ContactBE.Models.ContactData", "rp": "ContactBE_ContactData.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ContactBE.Models.ContactDatabase", "rp": "ContactBE_ContactDatabase.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ContactBE.Models.Dtos.CreateContactDto", "rp": "ContactBE_CreateContactDto.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Program", "rp": "ContactBE_Program.html", "cl": 0, "ucl": 34, "cal": 34, "tl": 53, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ContactBE.Models.Dtos.DefaultContactsDto", "rp": "ContactBE_DefaultContactsDto.html", "cl": 67, "ucl": 0, "cal": 67, "tl": 76, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Program", "rp": "ContactBE_Program.html", "cl": 36, "ucl": 0, "cal": 36, "tl": 61, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
